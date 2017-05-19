@@ -1,0 +1,570 @@
+/* CSS Document */
+
+// variables
+	//type
+	$fontFamily: "casablanca-urw", sans-serif;
+	$oneEm: 18px;
+	$oneEmPlus: 21px;
+	$oneEmTablet: 24px;
+
+	//dimensions
+	//breakpoints
+	$mobileWidth: 360px;
+	$mobilePlus: 420px;
+	$tabletWidth: 768px;
+	$desktopWidth: 1024px;
+
+	//logodisplay
+	$cardTitle: 2em;
+	$selectedMenuItem: 3em;
+	$logoCardShown: auto;
+
+	//transformations
+	$transformTime: 0.5s;
+
+
+
+/* --------------------- */
+/* --- general stuff --- */
+/* --------------------- */
+
+body {
+	box-sizing: border-box;
+	margin: auto;
+	width: 100%;
+	text-align: center;
+	font-size: $oneEm;
+	font-weight: normal;
+	line-height: auto;
+	text-decoration: none;
+	text-transform: none;
+	color: black;
+	background-image: url(../imageAssets/backgrounds/namebackgroundkins.jpg);
+	background-size: auto;
+	background-repeat: repeat;
+	background-position: left;
+	background-attachment: fixed;
+	
+	@media only screen and (min-width: $mobilePlus) {
+		font-size: $oneEmPlus;
+	}
+	@media only screen and (min-width: $tabletWidth) {
+		font-size: $oneEmTablet;
+	}
+}
+section {
+	box-sizing: border-box;
+	margin: 0px auto;
+	width: 100%;
+	@media only screen and (min-width: $mobileWidth) {
+		width: $mobileWidth;
+	}
+	@media only screen and (min-width: $mobilePlus) {
+		width: $mobilePlus;
+	}
+	@media only screen and (min-width: $tabletWidth) {
+		width: $tabletWidth;
+	}
+	@media only screen and (min-width: $desktopWidth) {
+		width: $desktopWidth;
+	}
+}
+::-webkit-scrollbar { 
+    display: none; 
+}
+a {
+	font-family: "broadsheet", serif;
+	font-style: normal;
+	font-weight: 400;
+	text-decoration: none;
+	text-transform: none;
+	color: black;
+	transition: color $transformTime;
+}
+p {
+	padding: 0px 1em;
+	margin: 0px;
+	font-family: "freight-text-pro", serif;
+	font-style: normal;
+	font-weight: 300;
+	font-size: 100%;
+}
+ul {
+	list-style: none;
+	padding: 0px;
+	margin: 0px;
+}
+li {
+	padding: 1em 0px;
+}
+
+
+
+/* -------------------- */
+/* --- Navbar Stuff --- */
+/* -------------------- */
+
+.navbar {
+	width: 100%;
+}
+.menuButtonWrapper {
+	z-index: 960;
+	//box-sizing: border-box;
+	display: block;
+	top: 0px;
+	height: 3em;
+	width: inherit;
+	//padding-top: 1em;
+	position: fixed;
+	background-color: black;
+	border-bottom: thick solid hsla(270, 90%, 30%, 1.0);
+	
+	a {
+		color: whitesmoke;
+	}
+}
+
+.nameHome {
+	z-index: 990;
+	position: fixed;
+	margin: 0.75em auto;
+	padding: 0 1em;
+	right: 0px;
+	
+	a {
+		color: whitesmoke;
+	}
+}
+
+.navMenu {
+	position: fixed;
+	z-index: 950;
+	//padding-top: 1em;
+	height: 100vh;
+	width: 100%;
+	transform: translateY(-120%);
+	transition: height (7*$transformTime/5), top (7*$transformTime/5), transform (7*$transformTime/5) ease-in-out, position (7*$transformTime/5);
+	
+	background: hsla(0,0%,0%,0.93);
+	
+	a {
+		font-weight: 900;
+    	font-size: 2em;
+    	color: whitesmoke;
+		
+	}
+	a:hover {
+		color: black;
+		text-shadow: 0 0 4px hsla(30, 70%, 70%, 1.0);
+		transition: color (2*$transformTime/5), text-shadow (8*$transformTime/5);
+	}
+  	ul {
+    	top: 3em;
+		padding-top: 1em;
+    }
+	
+}
+.navMenu.active {
+	position: fixed;
+	height: 100vh;
+	width: 100%;
+	top: 3em;
+	transform: translateY(0%);
+	opacity: 1.0;
+	transition: height (7*$transformTime/5), top (7*$transformTime/5), transform (7*$transformTime/5) ease-in-out, position (7*$transformTime/5);
+}
+
+
+
+/* ------------------------- */
+/* --- fancy menu button --- */
+/* ------------------------- */
+
+button {
+	width: auto;
+	-webkit-appearance: none;
+	appearance: none;
+	border: none;
+	height: inherit;
+	width: 37px;
+	background: 0 0;
+	cursor: pointer;
+	outline: none;
+	
+	@media screen and (max-width: 768px) {
+		position: fixed;
+		left: 1em;
+	}
+	
+	/*:hover {
+		background: gray;
+		.buttonIcon::before { top: 8px; }
+		.buttonIcon::after { top: -8px; }
+	}*/
+}
+.buttonIcon {
+	height: 3px;
+	width: 25px;
+	position: relative;
+	transform-origin: 50% 50%;
+}
+.buttonIcon, .buttonIcon::before, .buttonIcon::after {
+	border-radius: 0;
+	transition: .1s ease-in-out;
+	background: whitesmoke;
+	display: inline-block;
+}
+.buttonIcon::before, .buttonIcon::after {
+	height: 3px;
+	width: 100%;
+	left: 0;
+	transition: .1s ease-in-out;
+	position: absolute;
+	content: '';
+	transform-origin: 2.5px center;
+}
+.buttonIcon::before {
+	top: 7px;
+}
+.buttonIcon::after {
+	top: -7px;
+}
+
+
+
+/* ------------------------ */
+/* --- Active Selection --- */
+/* ------------------------ */
+
+.activeSelection {
+	height: auto;
+	transform: rotateX(0deg);
+	transition: height (7*$transformTime/5), transform $transformTime ease-in-out;
+}
+
+
+
+/* ------------------------- */
+/* --- Logo Menu/Display --- */
+/* ------------------------- */
+
+.logoMenu {
+	position: absolute;
+	top: 0px;
+	padding-top: 3em;
+	height: auto;
+	width: inherit;
+	transform: translateY(-100%);
+	transition: height (7*$transformTime/5), transform $transformTime ease-in-out;
+	
+	a {
+		font-size: 120%;
+		color: black;
+		text-shadow: 0px 5px 5px gray;
+		:hover {
+			color: hsla(0,0%,20%,0.5);
+			text-shadow: 0px 6px 7px lightgray;
+			transition: 0.1s;
+		}
+	}
+}
+.logoMenu.activeSelection {
+	transform: translateY(0%);
+	transition: height (7*$transformTime/5), transform $transformTime ease-in-out;
+}
+
+
+.menu {
+	height: 3em;
+	transition: height (7*$transformTime/5), transform $transformTime;
+	
+	.cardTitle {
+		box-sizing: border-box;
+		display: block;
+		height: $cardTitle;
+		padding-top: 0.74em;
+		font-weight: 100;
+		transition: height (3*$transformTime/5), padding (3*$transformTime/5);
+		:hover {
+			color: hsla(0,0%,20%,1.00);
+			text-shadow: 0px 7px 6px gray, 0 1px 4px hsla(30, 70%, 70%, 1.0);
+			transition: (3*$transformTime/5);
+		}
+	}
+	a {
+		vertical-align: middle;
+		transition: text-shadow (3*$transformTime/5);
+	}
+	.showCard {
+		height: 0px;
+		padding-top: 0.5em;
+		opacity: 0;
+		background-color: none;
+		line-height: normal;
+		transform: rotateX(90deg);
+		transform-origin: center top;
+		transition: height (7*$transformTime/5), transform (3*$transformTime/5) ease-in-out, opacity $transformTime ease-in-out;
+	}
+}
+.menu.selected {
+	height: auto;
+	padding-bottom: 2em;
+	background: linear-gradient(hsla(0,0%,0%,0.8), hsla(0,0%,0%,0.4), hsla(0,0%,0%,0.8));
+	transition: height (7*$transformTime/5), transform $transformTime;
+	color: whitesmoke;
+	
+	.cardTitle {
+		height: 3.5em;
+		transition: height (3*$transformTime/5), padding (3*$transformTime/5);
+		:hover {
+			color: whitesmoke;
+		}
+	}
+	a {
+		font-weight: 900;
+		letter-spacing: 0.125em;
+		color: whitesmoke;
+		text-shadow: 0px 7px 6px lightgray;
+		transition: letter-spacing (3*$transformTime/5), font-weight (3*$transformTime/5);
+	}
+	.showCard {
+		height: auto;
+		transform: rotateX(0deg);
+		transform-origin: center top;
+		opacity: 1;
+		transition: height (7*$transformTime/5), transform (2*$transformTime/5) ease-in-out, opacity $transformTime ease-in-out;
+	}
+}
+/*.menu.selected::after {
+	display: block;
+	background: -webkit-linear-gradient(hsla(0,0%,0%,0.8), hsla(0,0%,0%,0.0));
+	background: -o-linear-gradient(hsla(0,0%,0%,0.8), hsla(0,0%,0%,0.0));
+	background: linear-gradient(hsla(0,0%,0%,0.8), hsla(0,0%,0%,0.0));
+}*/
+
+/* --- backgrounds --- */
+
+.menu.selected .cardTitle {
+	background: hsla(0,0%,0%,0.6);
+}
+
+/*.powerDynamix.menu.selected .cardTitle {
+	background-image: url("../imageAssets/backgrounds/PDXbg.jpg");
+}
+.garageMahal.menu.selected .cardTitle {
+	background-image: url("../imageAssets/backgrounds/GMHbg.jpg");
+}
+.liquidAlchemy.menu.selected .cardTitle {
+	background-image: url("../imageAssets/backgrounds/LQAbg.jpg");
+}
+.exponent.menu.selected .cardTitle {
+	background-image: url("../imageAssets/backgrounds/EXPbg.jpg");
+}
+.firstChristian.menu.selected .cardTitle {
+	background-image: url("../imageAssets/backgrounds/FCCbg.jpg");
+}
+.fSarge.menu.selected .cardTitle {
+	background-image: url("../imageAssets/backgrounds/FSBbg.jpg");
+}*/
+
+
+
+/* --------------------------- */
+/* --- Bio/Contact Display --- */
+/* --------------------------- */
+
+.bioSection, .contactSection {
+	position: absolute;
+	top: 0px;
+	padding-top: 3em;
+	margin: 0px auto;
+	left: 0;
+	right: 0;
+	height: auto;
+	transform: translateY(-100%);
+	transition: height (7*$transformTime/5), transform $transformTime ease-in-out;
+	
+	p {
+		padding: 2em;
+		font-weight: 600;
+		//letter-spacing: ;
+	}
+}
+.bioSection.activeSelection, .contactSection.activeSelection {
+	transform: translateY(0%);
+}
+
+.socialicon {
+	display: inline-block;
+	padding: 1em;
+}
+
+
+
+/* ---------------------------- */
+/* --- Splash Page / Images --- */
+/* ---------------------------- */
+
+.logoSplash {
+	position: absolute;
+	width: 300px;
+	height: 300px;
+	margin: auto;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	transform: translateY(-100vh);
+	transition: transform $transformTime ease-in-out;
+	@media only screen and (min-width: $mobilePlus) {
+		width: 360px;
+		height: 360px;
+	}
+	@media only screen and (min-width: $tabletWidth) {
+		width: 420px;
+		height: 420px;
+	}
+	@media only screen and (min-width: $desktopWidth) {
+		width: 510px;
+		height: 510px;
+	}
+	
+	.splash {
+		/*width: 240px;
+		height: auto;
+		margin: 0px auto;
+		left: 0;
+		right: 0;*/
+		img {
+			width: 300px;
+			height: auto;
+			margin: 0px auto;
+			left: 0;
+			right: 0;
+			@media only screen and (min-width: $mobilePlus) {
+				width: 360px;
+			}
+			@media only screen and (min-width: $tabletWidth) {
+				width: 420px;
+			}
+			@media only screen and (min-width: $desktopWidth) {
+				width: 510px;
+			}
+		}
+	}
+}
+
+@keyframes logoskewfront {
+	0% {
+		transform: skew(0deg,0deg);
+	}
+	100% {
+		transform: skew(90deg,90deg);
+	}
+}
+@keyframes logoskewback {
+	0% {
+		transform: skew(90deg,90deg);
+	}
+	100% {
+		transform: skew(180deg,180deg);
+	}
+}
+
+.logoSplash.activeSelection {
+	transform: translateY(0%);
+}
+.pLogo {
+	backface-visibility: hidden;
+	-webkit-backface-visibility: hidden;
+	position: absolute;
+}
+.forwards.active, .backwards.active {
+	transform: rotateY(0deg);
+	transition: transform $transformTime;
+	//animation: logoskew 1s 0s 1;
+}
+.forwards, .backwards {
+	transform: rotateY(180deg);
+	transition: transform $transformTime;
+	//animation: logoskew 1s 1s 1;
+}
+
+.logoMain {
+	padding: 1em 2em;
+    height: auto;
+    width: 310px;
+	@media only screen and (min-width: $mobilePlus) {
+		width: 360px;
+	}
+	@media only screen and (min-width: $tabletWidth) {
+		width: 420px;
+	}
+	@media only screen and (min-width: $desktopWidth) {
+		width: 510px;
+	}
+}
+
+.logoSupport {
+	padding: 1em;
+	width: 96px;
+	height: auto;
+	@media only screen and (min-width: $mobilePlus) {
+		width: 124px;
+	}
+	@media only screen and (min-width: $tabletWidth) {
+		width: 124px;
+	}
+	@media only screen and (min-width: $desktopWidth) {
+		width: 124px;
+	}
+	cursor: pointer;
+}
+.logoMain.active, .logoSupport.active {
+	position: absolute;
+	bottom: 0;
+	width: 310px;
+	height: auto;
+	margin: 0px auto;
+	left: 0;
+	right: 0;
+	transition: position (3*$transformTime/5), top (3*$transformTime/5), left (3*$transformTime/5), right (3*$transformTime/5), height (3*$transformTime/5), width (3*$transformTime/5);
+	@media only screen and (min-width: $mobilePlus) {
+		width: 360px;
+	}
+	@media only screen and (min-width: $tabletWidth) {
+		width: 420px;
+	}
+	@media only screen and (min-width: $desktopWidth) {
+		width: 510px;
+	}
+}
+
+
+.desktop {
+	display: none;
+	@media only screen and (min-width: $desktopWidth) {
+		display: inline-block;
+	}	
+}
+.tablet {
+	display: none;
+	@media only screen and (min-width: $tabletWidth) and (max-width: $desktopWidth) {
+		display: inline-block;
+	}	
+}
+.mobilePlus {
+	display: none;
+	@media only screen and (min-width: $mobilePlus) and (max-width: $tabletWidth) {
+		display: inline-block;
+	}
+}
+.mobile {
+	display: inline-block;
+	@media only screen and (min-width: $mobilePlus) {
+		display: none;
+	}
+}
+
+.menuPreview {}
+

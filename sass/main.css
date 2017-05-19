@@ -1,0 +1,458 @@
+/* CSS Document */
+/* --------------------- */
+/* --- general stuff --- */
+/* --------------------- */
+body {
+  box-sizing: border-box;
+  margin: auto;
+  width: 100%;
+  text-align: center;
+  font-size: 18px;
+  font-weight: normal;
+  line-height: auto;
+  text-decoration: none;
+  text-transform: none;
+  color: black;
+  background-image: url(../imageAssets/backgrounds/namebackgroundkins.jpg);
+  background-size: auto;
+  background-repeat: repeat;
+  background-position: left;
+  background-attachment: fixed; }
+  @media only screen and (min-width: 420px) {
+    body {
+      font-size: 21px; } }
+  @media only screen and (min-width: 768px) {
+    body {
+      font-size: 24px; } }
+
+section {
+  box-sizing: border-box;
+  margin: 0px auto;
+  width: 100%; }
+  @media only screen and (min-width: 360px) {
+    section {
+      width: 360px; } }
+  @media only screen and (min-width: 420px) {
+    section {
+      width: 420px; } }
+  @media only screen and (min-width: 768px) {
+    section {
+      width: 768px; } }
+  @media only screen and (min-width: 1024px) {
+    section {
+      width: 1024px; } }
+
+::-webkit-scrollbar {
+  display: none; }
+
+a {
+  font-family: "broadsheet", serif;
+  font-style: normal;
+  font-weight: 400;
+  text-decoration: none;
+  text-transform: none;
+  color: black;
+  transition: color 0.5s; }
+
+p {
+  padding: 0px 1em;
+  margin: 0px;
+  font-family: "freight-text-pro", serif;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 100%; }
+
+ul {
+  list-style: none;
+  padding: 0px;
+  margin: 0px; }
+
+li {
+  padding: 1em 0px; }
+
+/* -------------------- */
+/* --- Navbar Stuff --- */
+/* -------------------- */
+.navbar {
+  width: 100%; }
+
+.menuButtonWrapper {
+  z-index: 960;
+  display: block;
+  top: 0px;
+  height: 3em;
+  width: inherit;
+  position: fixed;
+  background-color: black;
+  border-bottom: thick solid #4d0891; }
+  .menuButtonWrapper a {
+    color: whitesmoke; }
+
+.nameHome {
+  z-index: 990;
+  position: fixed;
+  margin: 0.75em auto;
+  padding: 0 1em;
+  right: 0px; }
+  .nameHome a {
+    color: whitesmoke; }
+
+.navMenu {
+  position: fixed;
+  z-index: 950;
+  height: 100vh;
+  width: 100%;
+  transform: translateY(-120%);
+  transition: height 0.7s, top 0.7s, transform 0.7s ease-in-out, position 0.7s;
+  background: rgba(0, 0, 0, 0.93); }
+  .navMenu a {
+    font-weight: 900;
+    font-size: 2em;
+    color: whitesmoke; }
+  .navMenu a:hover {
+    color: black;
+    text-shadow: 0 0 4px #e8b37d;
+    transition: color 0.2s, text-shadow 0.8s; }
+  .navMenu ul {
+    top: 3em;
+    padding-top: 1em; }
+
+.navMenu.active {
+  position: fixed;
+  height: 100vh;
+  width: 100%;
+  top: 3em;
+  transform: translateY(0%);
+  opacity: 1.0;
+  transition: height 0.7s, top 0.7s, transform 0.7s ease-in-out, position 0.7s; }
+
+/* ------------------------- */
+/* --- fancy menu button --- */
+/* ------------------------- */
+button {
+  width: auto;
+  -webkit-appearance: none;
+  appearance: none;
+  border: none;
+  height: inherit;
+  width: 37px;
+  background: 0 0;
+  cursor: pointer;
+  outline: none;
+  /*:hover {
+  	background: gray;
+  	.buttonIcon::before { top: 8px; }
+  	.buttonIcon::after { top: -8px; }
+  }*/ }
+  @media screen and (max-width: 768px) {
+    button {
+      position: fixed;
+      left: 1em; } }
+
+.buttonIcon {
+  height: 3px;
+  width: 25px;
+  position: relative;
+  transform-origin: 50% 50%; }
+
+.buttonIcon, .buttonIcon::before, .buttonIcon::after {
+  border-radius: 0;
+  transition: .1s ease-in-out;
+  background: whitesmoke;
+  display: inline-block; }
+
+.buttonIcon::before, .buttonIcon::after {
+  height: 3px;
+  width: 100%;
+  left: 0;
+  transition: .1s ease-in-out;
+  position: absolute;
+  content: '';
+  transform-origin: 2.5px center; }
+
+.buttonIcon::before {
+  top: 7px; }
+
+.buttonIcon::after {
+  top: -7px; }
+
+/* ------------------------ */
+/* --- Active Selection --- */
+/* ------------------------ */
+.activeSelection {
+  height: auto;
+  transform: rotateX(0deg);
+  transition: height 0.7s, transform 0.5s ease-in-out; }
+
+/* ------------------------- */
+/* --- Logo Menu/Display --- */
+/* ------------------------- */
+.logoMenu {
+  position: absolute;
+  top: 0px;
+  padding-top: 3em;
+  height: auto;
+  width: inherit;
+  transform: translateY(-100%);
+  transition: height 0.7s, transform 0.5s ease-in-out; }
+  .logoMenu a {
+    font-size: 120%;
+    color: black;
+    text-shadow: 0px 5px 5px gray; }
+    .logoMenu a :hover {
+      color: rgba(51, 51, 51, 0.5);
+      text-shadow: 0px 6px 7px lightgray;
+      transition: 0.1s; }
+
+.logoMenu.activeSelection {
+  transform: translateY(0%);
+  transition: height 0.7s, transform 0.5s ease-in-out; }
+
+.menu {
+  height: 3em;
+  transition: height 0.7s, transform 0.5s; }
+  .menu .cardTitle {
+    box-sizing: border-box;
+    display: block;
+    height: 2em;
+    padding-top: 0.74em;
+    font-weight: 100;
+    transition: height 0.3s, padding 0.3s; }
+    .menu .cardTitle :hover {
+      color: #333333;
+      text-shadow: 0px 7px 6px gray, 0 1px 4px #e8b37d;
+      transition: 0.3s; }
+  .menu a {
+    vertical-align: middle;
+    transition: text-shadow 0.3s; }
+  .menu .showCard {
+    height: 0px;
+    padding-top: 0.5em;
+    opacity: 0;
+    background-color: none;
+    line-height: normal;
+    transform: rotateX(90deg);
+    transform-origin: center top;
+    transition: height 0.7s, transform 0.3s ease-in-out, opacity 0.5s ease-in-out; }
+
+.menu.selected {
+  height: auto;
+  padding-bottom: 2em;
+  background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.8));
+  transition: height 0.7s, transform 0.5s;
+  color: whitesmoke; }
+  .menu.selected .cardTitle {
+    height: 3.5em;
+    transition: height 0.3s, padding 0.3s; }
+    .menu.selected .cardTitle :hover {
+      color: whitesmoke; }
+  .menu.selected a {
+    font-weight: 900;
+    letter-spacing: 0.125em;
+    color: whitesmoke;
+    text-shadow: 0px 7px 6px lightgray;
+    transition: letter-spacing 0.3s, font-weight 0.3s; }
+  .menu.selected .showCard {
+    height: auto;
+    transform: rotateX(0deg);
+    transform-origin: center top;
+    opacity: 1;
+    transition: height 0.7s, transform 0.2s ease-in-out, opacity 0.5s ease-in-out; }
+
+/*.menu.selected::after {
+	display: block;
+	background: -webkit-linear-gradient(hsla(0,0%,0%,0.8), hsla(0,0%,0%,0.0));
+	background: -o-linear-gradient(hsla(0,0%,0%,0.8), hsla(0,0%,0%,0.0));
+	background: linear-gradient(hsla(0,0%,0%,0.8), hsla(0,0%,0%,0.0));
+}*/
+/* --- backgrounds --- */
+.menu.selected .cardTitle {
+  background: rgba(0, 0, 0, 0.6); }
+
+/*.powerDynamix.menu.selected .cardTitle {
+	background-image: url("../imageAssets/backgrounds/PDXbg.jpg");
+}
+.garageMahal.menu.selected .cardTitle {
+	background-image: url("../imageAssets/backgrounds/GMHbg.jpg");
+}
+.liquidAlchemy.menu.selected .cardTitle {
+	background-image: url("../imageAssets/backgrounds/LQAbg.jpg");
+}
+.exponent.menu.selected .cardTitle {
+	background-image: url("../imageAssets/backgrounds/EXPbg.jpg");
+}
+.firstChristian.menu.selected .cardTitle {
+	background-image: url("../imageAssets/backgrounds/FCCbg.jpg");
+}
+.fSarge.menu.selected .cardTitle {
+	background-image: url("../imageAssets/backgrounds/FSBbg.jpg");
+}*/
+/* --------------------------- */
+/* --- Bio/Contact Display --- */
+/* --------------------------- */
+.bioSection, .contactSection {
+  position: absolute;
+  top: 0px;
+  padding-top: 3em;
+  margin: 0px auto;
+  left: 0;
+  right: 0;
+  height: auto;
+  transform: translateY(-100%);
+  transition: height 0.7s, transform 0.5s ease-in-out; }
+  .bioSection p, .contactSection p {
+    padding: 2em;
+    font-weight: 600; }
+
+.bioSection.activeSelection, .contactSection.activeSelection {
+  transform: translateY(0%); }
+
+.socialicon {
+  display: inline-block;
+  padding: 1em; }
+
+/* ---------------------------- */
+/* --- Splash Page / Images --- */
+/* ---------------------------- */
+.logoSplash {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  margin: auto;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  transform: translateY(-100vh);
+  transition: transform 0.5s ease-in-out; }
+  @media only screen and (min-width: 420px) {
+    .logoSplash {
+      width: 360px;
+      height: 360px; } }
+  @media only screen and (min-width: 768px) {
+    .logoSplash {
+      width: 420px;
+      height: 420px; } }
+  @media only screen and (min-width: 1024px) {
+    .logoSplash {
+      width: 510px;
+      height: 510px; } }
+  .logoSplash .splash {
+    /*width: 240px;
+    height: auto;
+    margin: 0px auto;
+    left: 0;
+    right: 0;*/ }
+    .logoSplash .splash img {
+      width: 300px;
+      height: auto;
+      margin: 0px auto;
+      left: 0;
+      right: 0; }
+      @media only screen and (min-width: 420px) {
+        .logoSplash .splash img {
+          width: 360px; } }
+      @media only screen and (min-width: 768px) {
+        .logoSplash .splash img {
+          width: 420px; } }
+      @media only screen and (min-width: 1024px) {
+        .logoSplash .splash img {
+          width: 510px; } }
+
+@keyframes logoskewfront {
+  0% {
+    transform: skew(0deg, 0deg); }
+  100% {
+    transform: skew(90deg, 90deg); } }
+@keyframes logoskewback {
+  0% {
+    transform: skew(90deg, 90deg); }
+  100% {
+    transform: skew(180deg, 180deg); } }
+.logoSplash.activeSelection {
+  transform: translateY(0%); }
+
+.pLogo {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  position: absolute; }
+
+.forwards.active, .backwards.active {
+  transform: rotateY(0deg);
+  transition: transform 0.5s; }
+
+.forwards, .backwards {
+  transform: rotateY(180deg);
+  transition: transform 0.5s; }
+
+.logoMain {
+  padding: 1em 2em;
+  height: auto;
+  width: 310px; }
+  @media only screen and (min-width: 420px) {
+    .logoMain {
+      width: 360px; } }
+  @media only screen and (min-width: 768px) {
+    .logoMain {
+      width: 420px; } }
+  @media only screen and (min-width: 1024px) {
+    .logoMain {
+      width: 510px; } }
+
+.logoSupport {
+  padding: 1em;
+  width: 96px;
+  height: auto;
+  cursor: pointer; }
+  @media only screen and (min-width: 420px) {
+    .logoSupport {
+      width: 124px; } }
+  @media only screen and (min-width: 768px) {
+    .logoSupport {
+      width: 124px; } }
+  @media only screen and (min-width: 1024px) {
+    .logoSupport {
+      width: 124px; } }
+
+.logoMain.active, .logoSupport.active {
+  position: absolute;
+  bottom: 0;
+  width: 310px;
+  height: auto;
+  margin: 0px auto;
+  left: 0;
+  right: 0;
+  transition: position 0.3s, top 0.3s, left 0.3s, right 0.3s, height 0.3s, width 0.3s; }
+  @media only screen and (min-width: 420px) {
+    .logoMain.active, .logoSupport.active {
+      width: 360px; } }
+  @media only screen and (min-width: 768px) {
+    .logoMain.active, .logoSupport.active {
+      width: 420px; } }
+  @media only screen and (min-width: 1024px) {
+    .logoMain.active, .logoSupport.active {
+      width: 510px; } }
+
+.desktop {
+  display: none; }
+  @media only screen and (min-width: 1024px) {
+    .desktop {
+      display: inline-block; } }
+
+.tablet {
+  display: none; }
+  @media only screen and (min-width: 768px) and (max-width: 1024px) {
+    .tablet {
+      display: inline-block; } }
+
+.mobilePlus {
+  display: none; }
+  @media only screen and (min-width: 420px) and (max-width: 768px) {
+    .mobilePlus {
+      display: inline-block; } }
+
+.mobile {
+  display: inline-block; }
+  @media only screen and (min-width: 420px) {
+    .mobile {
+      display: none; } }
